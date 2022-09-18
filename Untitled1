@@ -1,0 +1,108 @@
+void blur_box(int height, int width, RGBTRIPLE image[h][w] char color)
+
+if (color == 'b')
+{
+    if (h == 0)
+    {
+        if (w == 0)
+        {
+            image[h][w].rgbtBlue = (image[h][w].rgbtBlue + image[h][w + 1].rgbtBlue + image[h + 1][w].rgbtBlue + image[h + 1][w + 1].rgbtBlue) / 4;
+            image[h][w].rgbtGreen = (image[h][w].rgbtGreen + image[h][w + 1].rgbtGreen + image[h + 1][w].rgbtGreen + image[h + 1][w + 1].rgbtGreen) / 4;
+            image[h][w].rgbtRed = (image[h][w].rgbtRed + image[h][w + 1].rgbtRed + image[h + 1][w].rgbtRed + image[h + 1][w + 1].rgbtRed) / 4;
+        }
+        else if (w == width)
+        {
+            image[h][w].rgbtBlue = (image[h][w].rgbtBlue + image[h][w - 1].rgbtBlue + image[h + 1][w].rgbtBlue + image[h + 1][w - 1].rgbtBlue) / 4;
+            image[h][w].rgbtGreen = (image[h][w].rgbtGreen + image[h][w - 1].rgbtGreen + image[h + 1][w].rgbtGreen + image[h + 1][w - 1].rgbtGreen) / 4;
+            image[h][w].rgbtRed = (image[h][w].rgbtRed + image[h][w - 1].rgbtRed + image[h + 1][w].rgbtRed + image[h + 1][w - 1].rgbtRed) / 4;
+        }
+        else
+        {   int first_rowb = image[h][w].rgbtBlue + image[h][w - 1].rgbtBlue + image[h][w + 1].rgbtBlue;
+            int next_rowb = image[h + 1][w].rgbtBlue + image[h + 1][w - 1].rgbtBlue + image[h + 1][w + 1].rgbtBlue;
+            image[h][w].rgbtBlue = (first_rowb + next_rowb) / 6;
+
+            int first_rowg = image[h][w].rgbtGreen + image[h][w - 1].rgbtGreen + image[h][w + 1].rgbtGreen;
+            int next_rowg = image[h + 1][w].rgbtGreen + image[h + 1][w - 1].rgbtGreen + image[h + 1][w + 1].rgbtGreen;
+            image[h][w].rgbtGreen = (first_rowg + next_rowg) / 6;
+
+            int first_rowr = image[h][w].rgbtRed + image[h][w - 1].rgbtRed + image[h][w + 1].rgbtRed;
+            int next_rowr = image[h + 1][w].rgbtRed + image[h + 1][w - 1].rgbtRed + image[h + 1][w + 1].rgbtRed;
+            image[h][w].rgbtRed = (first_rowr + next_rowr) / 6;
+        }
+    }
+    else if (h == height)
+    {
+        if (w == 0)
+        {
+            image[h][w].rgbtBlue = (image[h][w].rgbtBlue + image[h][w + 1].rgbtBlue + image[h - 1][w].rgbtBlue + image[h - 1][w + 1].rgbtBlue) / 4;
+            image[h][w].rgbtGreen = (image[h][w].rgbtGreen + image[h][w + 1].rgbtGreen + image[h - 1][w].rgbtGreen + image[h - 1][w + 1].rgbtGreen) / 4;
+            image[h][w].rgbtRed = (image[h][w].rgbtRed + image[h][w + 1].rgbtRed + image[h - 1][w].rgbtRed + image[h - 1][w + 1].rgbtRed) / 4;
+        }
+        else if (w == width)
+        {
+            image[h][w].rgbtBlue = (image[h][w].rgbtBlue + image[h][w - 1].rgbtBlue + image[h - 1][w].rgbtBlue + image[h - 1][w - 1].rgbtBlue) / 4;
+            image[h][w].rgbtGreen = (image[h][w].rgbtGreen + image[h][w - 1].rgbtGreen + image[h - 1][w].rgbtGreen + image[h - 1][w - 1].rgbtGreen) / 4;
+            image[h][w].rgbtRed = (image[h][w].rgbtRed + image[h][w - 1].rgbtRed + image[h - 1][w].rgbtRed + image[h - 1][w - 1].rgbtRed) / 4;
+        }
+        else
+            int last_rowb = image[h][w].rgbtBlue + image[h][w - 1].rgbtBlue + image[h][w + 1].rgbtBlue;
+            int ant_rowb = image[h - 1][w].rgbtBlue + image[h - 1][w - 1].rgbtBlue + image[h - 1][w + 1].rgbtBlue;
+            image[h][w].rgbtBlue = (last_rowb + ant_rowb) / 6;
+
+            int last_rowg = image[h][w].rgbtGreen + image[h][w - 1].rgbtGreen + image[h][w + 1].rgbtGreen;
+            int ant_rowg = image[h - 1][w].rgbtGreen + image[h - 1][w - 1].rgbtGreen + image[h - 1][w + 1].rgbtGreen;
+            image[h][w].rgbtGreen = (last_rowg + ant_rowg) / 6;
+
+            int last_rowr = image[h][w].rgbtRed + image[h][w - 1].rgbtRed + image[h][w + 1].rgbtRed;
+            int ant_rowr = image[h - 1][w].rgbtRed + image[h - 1][w - 1].rgbtRed + image[h - 1][w + 1].rgbtRed;
+            image[h][w].rgbtRed = (last_rowr + ant_rowr) / 6;
+    }
+    else
+    {
+        if (w == 0)
+        {
+            int first_columnb = image[h][w].rgbtBlue + image[h + 1][w].rgbtBlue + image[h - 1][w].rgbtBlue;
+            int next_columnb = image[h][w + 1].rgbtBlue + image[h + 1][w + 1].rgbtBlue + image[h - 1][w + 1].rgbtBlue;
+            image[h][w].rgbtBlue = (first_columnb + next_columnb) / 6;
+
+            int first_columng = image[h][w].rgbtGreen + image[h + 1][w].rgbtGreen + image[h - 1][w].rgbtGreen;
+            int next_columng = image[h][w + 1].rgbtGreen + image[h + 1][w + 1].rgbtGreen + image[h - 1][w + 1].rgbtGreen;
+            image[h][w].rgbtGreen = (first_columng + next_columng) / 6;
+
+            int first_columnr = image[h][w].rgbtRed + image[h + 1][w].rgbtRed + image[h - 1][w].rgbtRed;
+            int next_columnr = image[h][w + 1].rgbtRed + image[h + 1][w + 1].rgbtRed + image[h - 1][w + 1].rgbtRed;
+            image[h][w].rgbtRed = (first_columnr + next_columnr) / 6;
+        }
+        else if (w = width)
+        {
+            int last_columnb = image[h][w].rgbtBlue + image[h + 1][w].rgbtBlue + image[h - 1][w].rgbtBlue;
+            int ant_columnb = image[h][w - 1].rgbtBlue + image[h + 1][w - 1].rgbtBlue + image[h - 1][w - 1].rgbtBlue;
+            image[h][w].rgbtBlue = (last_columnb + ant_columnb) / 6;
+
+            int last_columng = image[h][w].rgbtGreen + image[h + 1][w].rgbtGreen + image[h - 1][w].rgbtGreen;
+            int ant_columng = image[h][w - 1].rgbtGreen + image[h + 1][w - 1].rgbtGreen + image[h - 1][w - 1].rgbtGreen;
+            image[h][w].rgbtGreen = (last_columng + ant_columng) / 6;
+
+            int last_columnr = image[h][w].rgbtRed + image[h + 1][w].rgbtRed + image[h - 1][w].rgbtRed;
+            int ant_columnr = image[h][w - 1].rgbtRed + image[h + 1][w - 1].rgbtRed + image[h - 1][w - 1].rgbtRed;
+            image[h][w].rgbtRed = (last_columnr + ant_columnr) / 6;
+        }
+        else
+        {
+            int main_columnb = image[h][w].rgbtBlue + image[h + 1][w].rgbtBlue + image[h - 1][w].rgbtBlue;
+            int next_columnb = image[h][w + 1].rgbtBlue + image[h + 1][w + 1].rgbtBlue + image[h - 1][w + 1].rgbtBlue;
+            int ant_columnb = image[h][w].rgbtBlue + image[h + 1][w].rgbtBlue + image[h - 1][w].rgbtBlue;
+            image[h][w].rgbtBlue = (main_columnb + next_columnb + ant_columnb) / 9;
+
+            int main_columng = image[h][w].rgbtGreen + image[h + 1][w].rgbtGreen + image[h - 1][w].rgbtGreen;
+            int next_columng = image[h][w + 1].rgbtGreen + image[h + 1][w + 1].rgbtGreen + image[h - 1][w + 1].rgbtGreen;
+            int ant_columng = image[h][w].rgbtGreen + image[h + 1][w].rgbtGreen + image[h - 1][w].rgbtGreen;
+            image[h][w].rgbtGreen = (main_columng + next_columng + ant_columng) / 9;
+
+            int main_columnr = image[h][w].rgbtRed + image[h + 1][w].rgbtRed + image[h - 1][w].rgbtRed;
+            int next_columnr = image[h][w + 1].rgbtRed + image[h + 1][w + 1].rgbtRed + image[h - 1][w + 1].rgbtRed;
+            int ant_columnr = image[h][w].rgbtRed + image[h + 1][w].rgbtRed + image[h - 1][w].rgbtRed;
+            image[h][w].rgbtRed = (main_columnr + next_columnr + ant_columnr) / 9;
+        }
+    }
+}

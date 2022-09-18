@@ -1,0 +1,56 @@
+SORTING TIME
+
+random5000.txt      For Small Files     Sort1 is only faster than Sort2 when already sorted. Otherwise, its the slowest sorter. Sort2 behaves its worst when sorted.
+                                        Sort3 have the most stable behavior; It tends to develop its task in the same time, independently of the input.
+sort1:  0.062s  0.067s  0.059s  -- bubble sort
+sort2:  0.013s  0.010s  0.015s  -- merge sort
+sort3:  0.114s  0.034s  0.035s  -- selection sort
+
+sorted5000.txt                                      Sort1 behaves better
+
+sort1:  0.011s  0.010s  0.012s-- bubble sort?
+sort2:  0.015s  0.018s  0.013s
+sort3:  0.088s  0.037s  0.072s
+
+reversed5000.txt
+
+sort1:  0.062s  0.078s  0.092s
+sort2:  0.010s  0.014s  0.013s -- merge sort
+sort3:  0.035s  0.034s  0.082s
+
+random10000.txt     For Average Sized   Sort2 is the fastest; In sorted files it behaves in its slowest, and is caught by Sort1. Sort1 is only faster than Sort3 with sorted files.
+                                        Sort3 tends to be stable independently of the input type. Its running time grows exponentially as the input gets bigger.
+sort1:  0.472s
+sort2:  0.022s -- merge sort
+sort3:  0.223s
+
+sorted10000.txt
+
+sort1:  0.089s
+sort2:  0.089s
+sort3:  0.202s
+
+reversed10000.txt
+
+sort1:  0.445s
+sort2:  0.046s
+sort3:  0.248s
+
+random50000.txt     For Big Lists   Sort2 is the fastest. Sort1 behaves better than Sort3 only when the input is already sorted.
+                                    Sort3 is kinda constant; It behaves similarly independently of the input.
+
+sort1: 16.528s
+sort2:  2.594s
+sort3:  7.434s
+
+sorted50000.txt
+
+sort1:  7.189s
+sort2:  2.643s
+sort3:  8.418s
+
+reversed50000.txt
+
+sort1: 12.502s
+sort2:  6.770s
+sort3:  7.105s
