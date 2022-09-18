@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+        <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@500&display=swap" rel="stylesheet">
+        <link href="styles.css" rel="stylesheet">
+        <title>Trivia!</title>
+
+        <script>
+            //Responds to clicked button and tells if the user is right by color
+            function choices()
+            {
+                let answer = document.querySelector('#multiple_answer')
+                let one = document.querySelector('#one');
+                let two = document.querySelector('#two');
+                let three = document.querySelector('#three');
+                document.querySelector('#one').onclick = function() {
+                    one.style.backgroundColor = 'red';
+                    two.style.backgroundColor = '';
+                    three.style.backgroundColor = '';
+                    answer.innerHTML = 'Incorrect.';
+
+                }
+                document.querySelector('#two').onclick = function() {
+                    two.style.backgroundColor = 'green';
+                    one.style.backgroundColor = '';
+                    three.style.backgroundColor = '';
+                    answer.innerHTML = 'Correct!';
+                }
+                document.querySelector('#three').onclick = function() {
+                    three.style.backgroundColor = 'red';
+                    one.style.backgroundColor = '';
+                    two.style.backgroundColor = '';
+                    answer.innerHTML = 'Incorrect.';
+                }
+            }
+            //Checks for correctness of user's response
+            function check()
+            {
+                //hardcoded answer
+                let clue = "Brasilia"
+                //sets the answer's spot
+                let answer = document.querySelector('#free_answer');
+                //Selects the input and compares the user's response to the clue
+                let user_response = document.querySelector('#question').value;
+                if (clue == user_response)
+                {
+
+                    document.querySelector('#question').style.backgroundColor = 'green';
+                    answer.innerHTML = 'Correct!'
+
+                }
+                else
+                {
+                    document.querySelector('#question').style.backgroundColor = 'red';
+                    answer.innerHTML = 'Incorrect.'
+                }
+            }
+
+
+
+            document.addEventListener("DOMContentLoaded", choices);
+
+            // TODO: Add code to check answers to questions
+
+        </script>
+
+    </head>
+    <body>
+
+        <div class="jumbotron">
+            <h1>Trivia!</h1>
+        </div>
+
+        <div class="container">
+
+            <div class="section">
+                <h2>Part 1: Multiple Choice </h2>
+                <hr>
+                <h3>When was the Capital City of Brazil founded?</h3>
+                <p id="multiple_answer"></p>
+                <button id="one">1565</button>
+                <button id="two">1960</button>
+                <button id="three">1822</button>
+
+            </div>
+
+            <div class="section">
+                <h2>Part 2: Free Response</h2>
+                <hr>
+                <h3>What is the capital city of Brazil?</h3>
+                <p id="free_answer"></p>
+                <form onsubmit="check(); return false;">
+                    <input autocomplete="off" id="question" type="text">
+                    <button id="submit">Submit</button>
+                </form>
+
+            </div>
+
+        </div>
+    </body>
+</html>

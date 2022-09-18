@@ -1,0 +1,13 @@
+sort1 uses: Bubble sort
+
+How do you know?: It behaves much better with already sorted files than with not sorted ones; So, it must have a big O and an omega. Bubble sort is the only sorting algorythm that doesn't
+have a theta.
+
+sort2 uses: Merge sort
+
+How do you know?: It must have a theta, as it sorts files in similar time no matter how the input is organized, and it's exponentially faster than the others.
+
+sort3 uses: Selection sort
+
+How do you know?: Like Sort2, it behaves similarly no matter how the input is organized, so it must have a theta; It behaves worst than Sort1 when already sorted, while both Sort1 and 3
+behaves slower than Sort2 as the file gets bigger.
