@@ -1,0 +1,25 @@
+body {
+    background-color: AliceBlue;
+    text-align: center;
+}
+
+
+.page-header {
+    background-color: DarkGreen;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+nav {
+    background-color: Yellow;
+}
+
+a:hover {
+    color: Blue;
+}
+
+.header-button {
+    color: DarkBlue;
+    padding-left: 15px;
+    padding-right: 15px;
+}
